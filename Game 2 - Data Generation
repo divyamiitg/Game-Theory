@@ -1,0 +1,88 @@
+﻿import random
+import math
+A=[]
+B=[]
+C=[]
+D=[]
+E=[]
+F=[]
+winners=[]
+for i in range(7):
+    a=random.randint(1000,5000)
+    b=random.randint(1000,5000)
+    c=random.randint(1000,5000)
+    d=random.randint(1000,5000)
+    e=random.randint(1000,5000)
+    f=random.randint(1000,5000)
+    lst=[a,b,c,d,e,f]
+    # print(*lst)
+    maxi=(max(a,b,c,d,e,f))
+    mini=(min(a,b,c,d,e,f))
+    ans=math.sqrt((a**2+b**2+c**2+d**2+e**2+f**2)*(maxi-mini)/(6*maxi))
+    # print(ans)
+    arr=[]
+    for i in range(6):
+        arr.append([abs(ans-lst[i]),chr(65+i)])
+    arr.sort()
+    winner=arr[1][1]
+    winners.append(winner)
+    if winner=="A":
+        A.append(a)
+    if winner=="B":
+        B.append(b)
+    if winner=="C":
+        C.append(c)
+    if winner=="D":
+        D.append(d)
+    if winner=="E":
+        E.append(e)
+    if winner=="F":
+        F.append(f)
+top=[]
+maxi=0
+# print(*winners)
+for i in set(winners):
+    maxi=max(maxi,winners.count(i))
+
+
+for i in set(winners):
+    if winners.count(i)==maxi:
+        top.append(i)
+maxi=0
+for i in top:
+    if i=="A":
+        if sum(A)//7>maxi:
+            maxi=max(maxi,sum(A)//7)
+            answer="A"
+    if i=="B":
+        if sum(B)//7>maxi:
+            maxi=max(maxi,sum(B)//7)
+            answer="B"
+    if i=="C":
+        if sum(C)//7>maxi:
+            maxi=max(maxi,sum(C)//7)
+            answer="C"
+    if i=="D":
+        if sum(D)//7>maxi:
+            maxi=max(maxi,sum(D)//7)
+            answer="D"
+    if i=="E":
+        if sum(E)//7>maxi:
+            maxi=max(maxi,sum(E)//7)
+            answer="E"
+    if i=="F":
+        if sum(F)//7>maxi:
+            maxi=max(maxi,sum(F)//7)
+            answer="F"
+if answer=="A":
+    print("Winner=",answer, " and Price to be paid=",min(A))
+if answer=="B":
+    print("Winner=",answer, " and Price to be paid=",min(B))
+if answer=="C":
+    print("Winner=",answer, " and Price to be paid=",min(C))
+if answer=="D":
+    print("Winner=",answer, " and Price to be paid=",min(D))
+if answer=="E":
+    print("Winner=",answer, " and Price to be paid=",min(E))
+if answer=="F":
+    print("Winner=",answer, " and Price to be paid=",min(F))
